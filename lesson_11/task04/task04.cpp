@@ -50,7 +50,7 @@ int main()
 bool checkLine(string lineIn)
 {
     for (int i = 0; i < lineIn.size(); i++)
-        if (lineIn[i] != 'X' || lineIn[i] != 'O' || lineIn[i] != '.')
+        if (lineIn[i] != 'X' && lineIn[i] != 'O' && lineIn[i] != '.')
             return false;
     return true;
 }
