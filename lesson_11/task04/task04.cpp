@@ -20,8 +20,6 @@ int main()
 {
     bool checkLine(string);
     string checkBoard(string[]);
-    const string player1 = "Vasya";
-    const string player2 = "Patya";
     string lines[3];
 
     cout << "Введите результат игры\n" << endl;
@@ -36,7 +34,12 @@ int main()
     if (i < 3) {
         cout << "Incorrect" << endl;
     }
-    else if(checkBoard(lines) == "X");
+    else if(checkBoard(lines) == "X")
+        cout << "X won" << endl;
+    else if(checkBoard(lines) == "O")
+        cout << "O won" << endl;
+    else
+        cout << "Nobody won" << endl;
     return 0;
     
 }
@@ -61,9 +64,6 @@ string checkBoard(string lines[3]) {
     else if (checkColumns(lines) == "O") return "O";
     else if (checkDiagonal(lines) == "X") return "X";
     else if (checkDiagonal(lines) == "O") return "O";
-
-
-
 
     return ".";
 }
@@ -101,11 +101,16 @@ string checkDiagonal(string lines[3]) {
         if (lines[i][i] == 'X') countX++;
         else if (lines[i][i] == 'O') countO++;
     }
+    if (countX == 3) return "X";
+    else if (countO == 3) return "O";
     countO = 0;
     countX = 0;
-    for (int i = 2; i >= 0; i--) {
-        if (lines[i][i] == 'X') countX++;
-        else if (lines[i][i] == 'O') countO++;
+    for (int i = 0, j = 2; i < 3, j >=0; i++, j--) {
+        if (lines[i][j] == 'X') countX++;
+        else if (lines[i][j] == 'O') countO++;
     }
+    if (countX == 3) return "X";
+    else if (countO == 3) return "O";
+    return ".";
 
 }
