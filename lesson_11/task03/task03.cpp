@@ -59,5 +59,5 @@ bool checkIP(string address)
         }
     }
 
-    return true;
+    return count == 3;
 }
